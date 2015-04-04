@@ -36,8 +36,11 @@ public class Binding implements Serializable {
 	 * password.
 	 *
 	 * @param systemId
+	 *            SMPP system id
 	 * @param systemType
+	 *            SMPP system type
 	 * @param password
+	 *            SMPP password
 	 */
 	public Binding(String systemId, String systemType, String password) {
 		setSystemId(systemId);
@@ -49,13 +52,18 @@ public class Binding implements Serializable {
 	 * Instantiates a new Binding instance with a given systemId, systemType and
 	 * password. If receiver is true Binding will be used for receiving messages
 	 * and if transmitter is true Binding will be used for sending SMS messages.
-	 * Both receiver and transmitter can be set simoultaenously.
+	 * Both receiver and transmitter can be set simultaneously.
 	 *
 	 * @param systemId
+	 *            SMPP system id
 	 * @param systemType
+	 *            SMPP system type
 	 * @param password
+	 *            SMPP password
 	 * @param receiver
+	 *            true if binding as receiver
 	 * @param transmitter
+	 *            true if binding as transmitter
 	 */
 	public Binding(String systemId, String systemType, String password, boolean receiver, boolean transmitter) {
 		setSystemId(systemId);

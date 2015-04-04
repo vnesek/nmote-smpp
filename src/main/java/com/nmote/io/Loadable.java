@@ -17,7 +17,9 @@ public interface Loadable {
 	 * Loads instance data from InputStream
 	 *
 	 * @param in
+	 *            input stream
 	 * @throws IOException
+	 *             if reading fails
 	 */
 	void load(InputStream in) throws IOException;
 

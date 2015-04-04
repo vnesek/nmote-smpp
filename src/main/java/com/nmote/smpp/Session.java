@@ -36,6 +36,7 @@ import com.nmote.util.NewThreadExecutor;
 public class Session {
 
 	private class AutoEnquireLinkTask extends TimerTask implements CommandStateListener {
+
 		@Override
 		public void run() {
 			// log.info("Testing link");
@@ -50,9 +51,6 @@ public class Session {
 			}
 		}
 
-		/**
-		 * @see com.nmote.smpp.CommandStateListener#stateChanged(com.nmote.smpp.CommandStateEvent)
-		 */
 		@Override
 		public void stateChanged(CommandStateEvent event) {
 			if (event.getNextState() == Command.EXECUTED) {
@@ -114,9 +112,6 @@ public class Session {
 			receiver = null;
 		}
 
-		/**
-		 * @see java.lang.Object#toString()
-		 */
 		@Override
 		public String toString() {
 			return "SMPP Receiver " + link;
@@ -241,6 +236,9 @@ public class Session {
 
 	/**
 	 * Instantiates a new Session with a given link.
+	 *
+	 * @param link
+	 *            communication link
 	 */
 	public Session(Link link) {
 		this();
@@ -249,6 +247,9 @@ public class Session {
 
 	/**
 	 * Constructor for Session.
+	 *
+	 * @param linkFactory
+	 *            factory for link creation
 	 */
 	public Session(LinkFactory linkFactory) {
 		this();
@@ -399,11 +400,12 @@ public class Session {
 
 	/**
 	 * Executes command asynchronously. Use Command.waitForResponse() method to
-	 * wait for a response PDU. This method returns immidetly.
+	 * wait for a response PDU. This method returns immediately.
 	 *
 	 * @param command
 	 *            Command to execute.
 	 * @throws SessionException
+	 *             if error occures while queuing command
 	 * @throws IllegalStateException
 	 *             if command is already executing
 	 */
@@ -535,18 +537,15 @@ public class Session {
 	/**
 	 * Returns the timeout.
 	 *
-	 * @return long
+	 * @return the timeout
 	 */
 	public long getTimeout() {
 		return timeout;
 	}
 
-	/**
-	 * @return
-	 */
 	public boolean isCloseWhenUnbound() {
 		return closeWhenUnbound;
-	};
+	}
 
 	public synchronized void open() throws LinkCreationException {
 		if (getState() == CLOSED) {
@@ -614,9 +613,6 @@ public class Session {
 		this.binding = binding;
 	}
 
-	/**
-	 * @param b
-	 */
 	public void setCloseWhenUnbound(boolean b) {
 		closeWhenUnbound = b;
 	}
@@ -631,9 +627,6 @@ public class Session {
 		this.executor = executor;
 	}
 
-	/**
-	 * @param processor
-	 */
 	public void setIncomingProcessor(Processor processor) {
 		if (processor == null) {
 			throw new NullPointerException("processor == null");
@@ -641,9 +634,6 @@ public class Session {
 		incomingProcessor = processor;
 	}
 
-	/**
-	 * @param executor
-	 */
 	public void setIoThreadsExecutor(Executor executor) {
 		if (executor == null) {
 			throw new NullPointerException("IOThreadsExecutor cannot be null");
@@ -730,6 +720,9 @@ public class Session {
 
 	/**
 	 * Unbinds from remote entity.
+	 *
+	 * @throws SessionException
+	 *             if unbinding fails
 	 */
 	public void unbind() throws SessionException {
 		unbind(timeout);
@@ -741,6 +734,8 @@ public class Session {
 	 * @param timeout
 	 *            maximum time in ms to wait for response. If set to 0 wait
 	 *            forever.
+	 * @throws SessionException
+	 *             if unbinding fails
 	 */
 	public void unbind(long timeout) throws SessionException {
 		Command cmd = new Command(new UnbindPDU());
@@ -781,9 +776,10 @@ public class Session {
 	}
 
 	/**
-	 * Method linkException.
+	 * Processes exception occurred on link. Closes session.
 	 *
 	 * @param ioe
+	 *            exception
 	 */
 	protected synchronized void linkException(IOException ioe) {
 		if (getState() == CLOSED) {

@@ -19,23 +19,14 @@ import org.slf4j.Logger;
  */
 public class TCPLinkFactory implements LinkFactory {
 
-	/**
-	 * Constructor for TCPLink.
-	 */
 	public TCPLinkFactory() {
 	}
 
-	/**
-	 * Constructor for TCPLink.
-	 */
 	public TCPLinkFactory(String host) {
 		setHost(host);
 		setTimeout(0);
 	}
 
-	/**
-	 * Constructor for TCPLink.
-	 */
 	public TCPLinkFactory(String host, int port) {
 		setHost(host);
 		setPort(port);
@@ -66,7 +57,7 @@ public class TCPLinkFactory implements LinkFactory {
 	/**
 	 * Returns the host.
 	 *
-	 * @return String
+	 * @return host or IP address
 	 */
 	public String getHost() {
 		return host;
@@ -82,7 +73,7 @@ public class TCPLinkFactory implements LinkFactory {
 	/**
 	 * Returns the port.
 	 *
-	 * @return int
+	 * @return port
 	 */
 	public int getPort() {
 		return port;
@@ -91,7 +82,7 @@ public class TCPLinkFactory implements LinkFactory {
 	/**
 	 * Returns the timeout.
 	 *
-	 * @return int
+	 * @return timeout
 	 */
 	public int getTimeout() {
 		return timeout;
@@ -135,11 +126,6 @@ public class TCPLinkFactory implements LinkFactory {
 		this.timeout = timeout;
 	}
 
-	/**
-	 * String representation.
-	 *
-	 * @return a String
-	 */
 	@Override
 	public String toString() {
 		ToStringBuilder b = new ToStringBuilder(this);

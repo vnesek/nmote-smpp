@@ -28,9 +28,6 @@ public class StreamLink implements Link {
 
 	private static Logger log = LoggerFactory.getLogger(StreamLink.class);
 
-	/**
-	 * Constructor for StreamLink.
-	 */
 	public StreamLink(InputStream in, OutputStream out) {
 		this(in, out, null);
 	}
@@ -44,9 +41,6 @@ public class StreamLink implements Link {
 		output = new SMPPOutputStream(out);
 	}
 
-	/**
-	 * @see com.nmote.smpp.Link#close()
-	 */
 	@Override
 	public void close() throws IOException {
 		IOException ioe = null;
@@ -78,9 +72,6 @@ public class StreamLink implements Link {
 		}
 	}
 
-	/**
-	 * @see com.nmote.smpp.Link#receive()
-	 */
 	@Override
 	public AbstractPDU receive() throws IOException {
 		AbstractPDU pdu = input.readPDU();
@@ -90,9 +81,6 @@ public class StreamLink implements Link {
 		return pdu;
 	}
 
-	/**
-	 * @see com.nmote.smpp.Link#send(AbstractPDU)
-	 */
 	@Override
 	public void send(AbstractPDU pdu) throws IOException {
 		if (DEBUG) {

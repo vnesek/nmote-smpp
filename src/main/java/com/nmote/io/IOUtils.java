@@ -22,11 +22,16 @@ public class IOUtils {
 	 * returned end-of-file.
 	 *
 	 * @param in
+	 *            input stream
 	 * @param dest
+	 *            buffer
 	 * @param off
+	 *            offset
 	 * @param len
+	 *            length
 	 * @return number of bytes copied
 	 * @throws IOException
+	 *             if reading fails
 	 */
 	public static int copyStreamToByteArray(InputStream in, byte[] dest, int off, int len) throws IOException {
 		int r = 0;
@@ -47,8 +52,11 @@ public class IOUtils {
 	 * Loads loadable state from data.
 	 *
 	 * @param loadable
+	 *            instance to load data into
 	 * @param data
+	 *            serialized data
 	 * @throws IOException
+	 *             if reading fails
 	 */
 	public static void load(Loadable loadable, byte[] data) throws IOException {
 		ByteArrayInputStream in = new ByteArrayInputStream(data);
@@ -59,8 +67,10 @@ public class IOUtils {
 	 * Gets saved state of saveable.
 	 *
 	 * @param saveable
-	 * @return instance state
+	 *            instance to save to
+	 * @return serialized instance
 	 * @throws IOException
+	 *             if writing failse
 	 */
 	public static byte[] save(Saveable saveable) throws IOException {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();

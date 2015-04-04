@@ -20,6 +20,9 @@ public class Parameter {
 
 	/**
 	 * Constructor for TLV.
+	 *
+	 * @param tag
+	 *            SMPP tag code
 	 */
 	public Parameter(int tag) {
 		setTag(tag);
@@ -79,7 +82,7 @@ public class Parameter {
 	/**
 	 * Returns the tag.
 	 *
-	 * @return int
+	 * @return tag code
 	 */
 	public int getTag() {
 		return tag;

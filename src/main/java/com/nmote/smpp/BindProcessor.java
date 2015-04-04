@@ -31,6 +31,7 @@ public class BindProcessor implements Processor {
 	 * Instantiates new BindProcessor and sets authorizer.
 	 *
 	 * @param authorizer
+	 *            The authorizer to use
 	 */
 	public BindProcessor(BindingAuthorizer authorizer) {
 		setAuthorizer(authorizer);

@@ -29,6 +29,7 @@ public class DispatchProcessor implements Processor {
 	 * to process commands without registered processor.
 	 *
 	 * @param defaultProcessor
+	 *            the default processor
 	 */
 	public DispatchProcessor(Processor defaultProcessor) {
 		setDefaultProcessor(defaultProcessor);
@@ -47,6 +48,7 @@ public class DispatchProcessor implements Processor {
 	 * Returns processor for a given <code>cmd</code>
 	 *
 	 * @param cmd
+	 *            SMPP command code
 	 * @return Processor for <code>cmd</code>.
 	 */
 	public Processor getProcessor(int cmd) {

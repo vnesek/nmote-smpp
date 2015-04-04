@@ -29,46 +29,28 @@ public class ConcatenationIE extends IE {
 		}
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#getIdentifier()
-	 */
 	@Override
 	public byte getIdentifier() {
 		return (byte) (eightBit ? 0 : 8);
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#getLength()
-	 */
 	@Override
 	public int getLength() {
 		return eightBit ? 3 : 4;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getMaximum() {
 		return maximum;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getReference() {
 		return reference;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getSequence() {
 		return sequence;
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#load(java.io.InputStream)
-	 */
 	@Override
 	public void load(InputStream in) throws IOException {
 		setReference(eightBit ? readAndThrowEOF(in) : read16AndThrowEOF(in));
@@ -76,9 +58,6 @@ public class ConcatenationIE extends IE {
 		setSequence(readAndThrowEOF(in));
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#save(java.io.OutputStream)
-	 */
 	@Override
 	public void save(OutputStream out) throws IOException {
 		if (eightBit) {
@@ -90,9 +69,6 @@ public class ConcatenationIE extends IE {
 		out.write(sequence);
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setMaximum(int i) {
 		if (i < 1 || i > 255) {
 			throw new IllegalArgumentException();
@@ -100,9 +76,6 @@ public class ConcatenationIE extends IE {
 		maximum = i;
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setReference(int i) {
 		if (i < 0 || i > 65535) {
 			throw new IllegalArgumentException();
@@ -111,9 +84,6 @@ public class ConcatenationIE extends IE {
 		eightBit = reference <= 255;
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setSequence(int i) {
 		if (i < 1 || i > 255) {
 			throw new IllegalArgumentException();
@@ -121,9 +91,6 @@ public class ConcatenationIE extends IE {
 		sequence = i;
 	}
 
-	/**
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("seq", sequence).append("max", maximum).append("ref", reference)

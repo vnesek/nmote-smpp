@@ -26,6 +26,7 @@ public class SMSCSession extends Session {
 	 * Instantiates a new SMSCSession over a link
 	 *
 	 * @param link
+	 *            to use
 	 */
 	public SMSCSession(Link link) {
 		super(link);
@@ -34,6 +35,9 @@ public class SMSCSession extends Session {
 
 	/**
 	 * Constructor for Session.
+	 *
+	 * @param linkFactory
+	 *            factory for communication links
 	 */
 	public SMSCSession(LinkFactory linkFactory) {
 		super(linkFactory);
@@ -59,9 +63,6 @@ public class SMSCSession extends Session {
 		execute(cmd);
 	}
 
-	/**
-	 * @param authorizer
-	 */
 	public void setAuthorizer(BindingAuthorizer authorizer) {
 		this.authorizer = authorizer;
 	}
@@ -75,5 +76,4 @@ public class SMSCSession extends Session {
 	}
 
 	private BindingAuthorizer authorizer;
-
 }

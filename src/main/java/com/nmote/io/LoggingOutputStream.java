@@ -46,9 +46,6 @@ public class LoggingOutputStream extends FilterOutputStream {
 		super.flush();
 	}
 
-	/**
-	 * @see java.io.OutputStream#write(int)
-	 */
 	@Override
 	public void write(int b) throws IOException {
 		support.logByte(b);

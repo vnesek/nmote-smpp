@@ -24,7 +24,7 @@ import com.nmote.smpp.CommandStateListener;
  *
  * <pre>
  * Command submit = new Command(req);
- * 
+ *
  * // Set a CommandStateListener that will be called when
  * // command completes execution
  * submit.setCommandStateListener(new CommandStateAdapter() {
@@ -34,7 +34,7 @@ import com.nmote.smpp.CommandStateListener;
  * 		System.out.println(&quot;Message ID &quot; + resp.getMessageId());
  * 	}
  * });
- * 
+ *
  * // Execute command asynchronously
  * s.executeAsync(submit);
  * </pre>
@@ -48,6 +48,7 @@ public abstract class CommandStateAdapter implements CommandStateListener {
 	 * Called when command is cancelled by a client.
 	 *
 	 * @param cmd
+	 *            that was cancelled
 	 */
 	public void cancelled(Command cmd) {
 	}
@@ -57,6 +58,7 @@ public abstract class CommandStateAdapter implements CommandStateListener {
 	 * entity.
 	 *
 	 * @param cmd
+	 *            that was executed
 	 */
 	public void executed(Command cmd) {
 	}
@@ -65,6 +67,7 @@ public abstract class CommandStateAdapter implements CommandStateListener {
 	 * Called when command is queued into outgoing command queue.
 	 *
 	 * @param cmd
+	 *            that was queued
 	 */
 	public void queued(Command cmd) {
 	}
@@ -73,6 +76,7 @@ public abstract class CommandStateAdapter implements CommandStateListener {
 	 * Called when command is responded i.e. client sends response to requestor.
 	 *
 	 * @param cmd
+	 *            that was responded to
 	 */
 	public void responded(Command cmd) {
 	}
@@ -81,13 +85,11 @@ public abstract class CommandStateAdapter implements CommandStateListener {
 	 * Called when command is sent to remote entity.
 	 *
 	 * @param cmd
+	 *            that was sent
 	 */
 	public void sent(Command cmd) {
 	}
 
-	/**
-	 * @see com.nmote.smpp.CommandStateListener#stateChanged(com.nmote.smpp.CommandStateEvent)
-	 */
 	@Override
 	public void stateChanged(CommandStateEvent event) {
 		Command cmd = event.getCommand();
@@ -117,6 +119,7 @@ public abstract class CommandStateAdapter implements CommandStateListener {
 	 * Called when command times out.
 	 *
 	 * @param cmd
+	 *            that has timed out.
 	 */
 	public void timedOut(Command cmd) {
 	}

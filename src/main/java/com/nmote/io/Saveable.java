@@ -9,15 +9,17 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * Saveable objects can be saved to OutputStream
+ * Saveable objects can be saved to OutputStream.
  */
 public interface Saveable {
 
 	/**
-	 * Outputs instance data to OutputStream
+	 * Saves instance data to OutputStream.
 	 *
 	 * @param out
+	 *            output stream
 	 * @throws IOException
+	 *             if writing fails
 	 */
 	void save(OutputStream out) throws IOException;
 

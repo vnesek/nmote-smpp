@@ -12,6 +12,7 @@ package com.nmote.smpp;
  * @author Vjekoslav Nesek
  */
 public class CommandTimedOutException extends SessionException {
+
 	private static final long serialVersionUID = About.SERIAL_VERSION_UID;
 
 	/**
@@ -25,6 +26,7 @@ public class CommandTimedOutException extends SessionException {
 	 * Constructor for CommandTimedOutException.
 	 *
 	 * @param message
+	 *            error message
 	 */
 	public CommandTimedOutException(String message) {
 		super(message);

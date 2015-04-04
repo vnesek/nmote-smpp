@@ -20,6 +20,7 @@ public class ESMESession extends Session {
 	 * Instantiates a new ESMESession over a link
 	 *
 	 * @param link
+	 *            communication link
 	 */
 	public ESMESession(Link link) {
 		super(link);
@@ -30,6 +31,7 @@ public class ESMESession extends Session {
 	 * instance when open is called.
 	 *
 	 * @param linkFactory
+	 *            factory for link creation
 	 */
 	public ESMESession(LinkFactory linkFactory) {
 		super(linkFactory);
@@ -39,6 +41,7 @@ public class ESMESession extends Session {
 	 * Synchronously binds to SMSC session running on other side of link.
 	 *
 	 * @throws SessionException
+	 *             if binding fails
 	 */
 	public void bind() throws SessionException {
 		Binding binding = getBinding();
@@ -80,9 +83,6 @@ public class ESMESession extends Session {
 		setAutoConnect(autoConnect);
 	}
 
-	/**
-	 * @return
-	 */
 	public long getConnectRetry() {
 		return connectRetry;
 	}
@@ -96,9 +96,6 @@ public class ESMESession extends Session {
 		return autoConnect;
 	}
 
-	/**
-	 * @see com.nmote.smpp.Session#open()
-	 */
 	@Override
 	public synchronized void open() throws LinkCreationException {
 		try {
@@ -121,7 +118,10 @@ public class ESMESession extends Session {
 	}
 
 	/**
-	 * @param l
+	 * Sets connect retry in milliseconds
+	 *
+	 * @param retry
+	 *            the connect retry parameter
 	 */
 	public void setConnectRetry(long retry) {
 		if (retry < 500) {

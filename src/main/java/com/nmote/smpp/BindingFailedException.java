@@ -24,6 +24,7 @@ public class BindingFailedException extends SessionException {
 	 * Constructor for BindingFailedException.
 	 *
 	 * @param status
+	 *            SMPP status
 	 */
 	public BindingFailedException(int status) {
 		super(null, status);
@@ -33,6 +34,7 @@ public class BindingFailedException extends SessionException {
 	 * Constructor for BindingFailedException.
 	 *
 	 * @param message
+	 *            error message
 	 */
 	public BindingFailedException(String message) {
 		super(message);
@@ -42,7 +44,9 @@ public class BindingFailedException extends SessionException {
 	 * Constructor for BindingFailedException.
 	 *
 	 * @param message
+	 *            error message
 	 * @param status
+	 *            SMPP status
 	 */
 	public BindingFailedException(String message, int status) {
 		super(message, status);

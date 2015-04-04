@@ -85,7 +85,7 @@ public class Command {
 	/**
 	 * Returns the command state.
 	 *
-	 * @return int
+	 * @return int the command state
 	 */
 	public int getState() {
 		return state;
@@ -117,6 +117,7 @@ public class Command {
 	 * events will be reported on this listener.
 	 *
 	 * @param listener
+	 *            command state listener
 	 */
 	public void setCommandStateListener(CommandStateListener listener) {
 		commandStateListener = listener;

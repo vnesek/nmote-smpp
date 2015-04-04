@@ -12,6 +12,7 @@ package com.nmote.smpp;
  * @author Vjekoslav Nesek
  */
 public class CommandCancelledException extends SessionException {
+
 	private static final long serialVersionUID = About.SERIAL_VERSION_UID;
 
 	/**
@@ -24,6 +25,7 @@ public class CommandCancelledException extends SessionException {
 	 * Constructor for CommandCancelledException.
 	 *
 	 * @param message
+	 *            error message
 	 */
 	public CommandCancelledException(String message) {
 		super(message);

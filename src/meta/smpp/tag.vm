@@ -49,6 +49,8 @@ public class Tag {
 	 * Returns SMPP protocol version when this tag
 	 * has first appeared.
 	 *
+	 * @param tag SMPP tag
+	 *
 	 * @return SMPP protocol version
 	 */
 	public static int since(int tag) {

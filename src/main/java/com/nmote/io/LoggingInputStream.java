@@ -40,9 +40,6 @@ public class LoggingInputStream extends FilterInputStream {
 		super.close();
 	}
 
-	/**
-	 * @see java.io.InputStream#read()
-	 */
 	@Override
 	public synchronized int read() throws IOException {
 		int b = super.read();

@@ -18,9 +18,6 @@ public class PortAddressingIE extends IE {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @param identifier
-	 */
 	public PortAddressingIE(int identifier) {
 		super(identifier);
 		if (identifier == 4) {
@@ -32,39 +29,24 @@ public class PortAddressingIE extends IE {
 		}
 	}
 
-	/**
-	 * @return
-	 */
 	public int getDestinationPort() {
 		return destinationPort;
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#getIdentifier()
-	 */
 	@Override
 	public byte getIdentifier() {
 		return (byte) (eightBit ? 4 : 5);
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#getLength()
-	 */
 	@Override
 	public int getLength() {
 		return eightBit ? 2 : 4;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getOriginatorPort() {
 		return originatorPort;
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#load(java.io.InputStream)
-	 */
 	@Override
 	public void load(InputStream in) throws IOException {
 		if (eightBit) {
@@ -76,9 +58,6 @@ public class PortAddressingIE extends IE {
 		}
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#save(java.io.OutputStream)
-	 */
 	@Override
 	public void save(OutputStream out) throws IOException {
 		if (eightBit) {
@@ -90,9 +69,6 @@ public class PortAddressingIE extends IE {
 		}
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setDestinationPort(int i) {
 		if (i < 0 || i > 65535) {
 			throw new IllegalArgumentException();
@@ -101,9 +77,6 @@ public class PortAddressingIE extends IE {
 		eightBit = destinationPort <= 255 && originatorPort <= 255;
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setOriginatorPort(int i) {
 		if (i < 0 || i > 65535) {
 			throw new IllegalArgumentException();
@@ -112,9 +85,6 @@ public class PortAddressingIE extends IE {
 		eightBit = destinationPort <= 255 && originatorPort <= 255;
 	}
 
-	/**
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("dst", destinationPort).append("org", originatorPort).toString();

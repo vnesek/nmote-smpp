@@ -17,16 +17,10 @@ import java.io.InputStream;
  */
 public class CloseableInputStream extends FilterInputStream {
 
-	/**
-	 * @param in
-	 */
 	public CloseableInputStream(InputStream in) {
 		super(in);
 	}
 
-	/**
-	 * @see java.io.InputStream#available()
-	 */
 	@Override
 	public int available() throws IOException {
 		int a;
@@ -38,17 +32,11 @@ public class CloseableInputStream extends FilterInputStream {
 		return a;
 	}
 
-	/**
-	 * @see java.io.InputStream#close()
-	 */
 	@Override
 	public void close() throws IOException {
 		closed = true;
 	}
 
-	/**
-	 * @see java.io.InputStream#read()
-	 */
 	@Override
 	public int read() throws IOException {
 		int r;
@@ -60,17 +48,11 @@ public class CloseableInputStream extends FilterInputStream {
 		return r;
 	}
 
-	/**
-	 * @see java.io.InputStream#read(byte[])
-	 */
 	@Override
 	public int read(byte[] b) throws IOException {
 		return super.read(b, 0, b.length);
 	}
 
-	/**
-	 * @see java.io.InputStream#read(byte[], int, int)
-	 */
 	@Override
 	public int read(byte[] b, int off, int len) throws IOException {
 		int r;
@@ -82,9 +64,6 @@ public class CloseableInputStream extends FilterInputStream {
 		return r;
 	}
 
-	/**
-	 * @see java.io.InputStream#skip(long)
-	 */
 	@Override
 	public long skip(long n) throws IOException {
 		long r;

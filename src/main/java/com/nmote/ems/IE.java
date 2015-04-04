@@ -26,8 +26,10 @@ public abstract class IE implements Loadable, Saveable, Serializable {
 	 * throws EOFException if EOF is reached.
 	 *
 	 * @param in
+	 *            input stream
 	 * @return byte from a stream
 	 * @throws IOException
+	 *             if reading fails
 	 */
 	final static int read16AndThrowEOF(InputStream in) throws IOException {
 		int i1 = in.read();
@@ -43,8 +45,10 @@ public abstract class IE implements Loadable, Saveable, Serializable {
 	 * if EOF is reached.
 	 *
 	 * @param in
+	 *            input stream
 	 * @return byte from a stream
 	 * @throws IOException
+	 *             if reading fails
 	 */
 	final static int readAndThrowEOF(InputStream in) throws IOException {
 		int i = in.read();
@@ -65,14 +69,14 @@ public abstract class IE implements Loadable, Saveable, Serializable {
 	/**
 	 * Returns identifier of this IE
 	 *
-	 * @return
+	 * @return IE id
 	 */
 	public abstract byte getIdentifier();
 
 	/**
 	 * Returns length of this IE
 	 *
-	 * @return
+	 * @return IE length
 	 */
 	public abstract int getLength();
 

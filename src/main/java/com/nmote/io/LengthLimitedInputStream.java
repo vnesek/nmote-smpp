@@ -18,9 +18,6 @@ import java.io.InputStream;
  */
 public class LengthLimitedInputStream extends FilterInputStream {
 
-	/**
-	 * @param in
-	 */
 	public LengthLimitedInputStream(InputStream in, int length) {
 		super(in);
 		if (length < 0) {
@@ -29,9 +26,6 @@ public class LengthLimitedInputStream extends FilterInputStream {
 		this.bytesLeft = length;
 	}
 
-	/**
-	 * @see java.io.InputStream#available()
-	 */
 	@Override
 	public int available() throws IOException {
 		int a = super.available();
@@ -68,9 +62,6 @@ public class LengthLimitedInputStream extends FilterInputStream {
 		return bytesLeft;
 	}
 
-	/**
-	 * @see java.io.InputStream#read()
-	 */
 	@Override
 	public int read() throws IOException {
 		int result;
@@ -83,17 +74,11 @@ public class LengthLimitedInputStream extends FilterInputStream {
 		return result;
 	}
 
-	/**
-	 * @see java.io.InputStream#read(byte[])
-	 */
 	@Override
 	public int read(byte[] b) throws IOException {
 		return read(b, 0, b.length);
 	}
 
-	/**
-	 * @see java.io.InputStream#read(byte[], int, int)
-	 */
 	@Override
 	public int read(byte[] b, int off, int len) throws IOException {
 		int bl = bytesLeft;
@@ -114,9 +99,6 @@ public class LengthLimitedInputStream extends FilterInputStream {
 		return r;
 	}
 
-	/**
-	 * @see java.io.InputStream#skip(long)
-	 */
 	@Override
 	public long skip(long n) throws IOException {
 		if (n > bytesLeft) {

@@ -23,7 +23,7 @@ public class PictureIE extends MediaIE {
 	/**
 	 * Inverts bitmap represented as byte[] in place.
 	 *
-	 * @param bitmap
+	 * @param bitmap to invert
 	 */
 	public static void invertBitmap(byte[] bitmap) {
 		for (int i = 0; i < bitmap.length; i++) {
@@ -31,9 +31,6 @@ public class PictureIE extends MediaIE {
 		}
 	}
 
-	/**
-	 * @param identifier
-	 */
 	public PictureIE(int identifier) {
 		super(identifier);
 		if (identifier < 0x10 || identifier > 0x12) {
@@ -41,23 +38,14 @@ public class PictureIE extends MediaIE {
 		}
 	}
 
-	/**
-	 * @return
-	 */
 	public byte[] getBitmap() {
 		return bitmap;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getHeight() {
 		return height;
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#getIdentifier()
-	 */
 	@Override
 	public byte getIdentifier() {
 		byte identifier;
@@ -71,9 +59,6 @@ public class PictureIE extends MediaIE {
 		return identifier;
 	}
 
-	/**
-	 * @see com.nmote.ems.IE#getLength()
-	 */
 	@Override
 	public int getLength() {
 		int len;
@@ -87,16 +72,10 @@ public class PictureIE extends MediaIE {
 		return len;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getWidth() {
 		return width;
 	}
 
-	/**
-	 * @see com.nmote.io.Loadable#load(java.io.InputStream)
-	 */
 	@Override
 	public void load(InputStream in) throws IOException {
 		setPosition(readAndThrowEOF(in));
@@ -112,9 +91,6 @@ public class PictureIE extends MediaIE {
 		IOUtils.copyStreamToByteArray(in, bitmap, 0, bitmap.length);
 	}
 
-	/**
-	 * @see com.nmote.io.Saveable#save(java.io.OutputStream)
-	 */
 	@Override
 	public void save(OutputStream out) throws IOException {
 		out.write(getPosition());
@@ -125,16 +101,10 @@ public class PictureIE extends MediaIE {
 		out.write(bitmap);
 	}
 
-	/**
-	 * @param bs
-	 */
 	public void setBitmap(byte[] bs) {
 		bitmap = bs;
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setHeight(int i) {
 		if (i < 0) {
 			throw new IllegalArgumentException();
@@ -142,9 +112,6 @@ public class PictureIE extends MediaIE {
 		height = i;
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setWidth(int i) {
 		if (i < 0 || (i % 8) != 0) {
 			throw new IllegalArgumentException();

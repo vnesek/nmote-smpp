@@ -14,16 +14,10 @@ public class NewThreadExecutor implements Executor {
 
 	public static final Executor INSTANCE = new NewThreadExecutor();
 
-	/**
-	 * @see com.nmote.util.Executor#dispose()
-	 */
 	@Override
 	public void dispose() {
 	}
 
-	/**
-	 * @see com.nmote.smpp.util.Executor#exec(java.lang.Runnable, int)
-	 */
 	@Override
 	public void exec(Runnable task, int priority) {
 		Thread t = new Thread(task);
@@ -48,6 +42,7 @@ public class NewThreadExecutor implements Executor {
 	 *
 	 * @see Thread#setDaemon(boolean)
 	 * @param daemon
+	 *            if thread should by daemonized
 	 */
 	public void setDaemon(boolean daemon) {
 		this.daemon = daemon;

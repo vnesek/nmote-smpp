@@ -144,7 +144,7 @@ public class UserDataBuilder extends Writer {
 	/**
 	 * Converts into a list of UserData instances.
 	 *
-	 * @return
+	 * @return user data instances
 	 */
 	public List<UserData> toUserDataList() {
 		int m = result.size() + 1;

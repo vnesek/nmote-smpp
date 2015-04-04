@@ -171,10 +171,6 @@ public class SMPPAddress implements Serializable, Cloneable {
 		return result;
 	}
 
-	/**
-	 * @deprecated
-	 * @param phoneNumber
-	 */
 	@Deprecated
 	public SMPPAddress(String phoneNumber) {
 		setPhoneNumber(phoneNumber);
@@ -184,6 +180,7 @@ public class SMPPAddress implements Serializable, Cloneable {
 	 * Constructor for SMPPAddress. Sets address, ton and npi.
 	 *
 	 * @param address
+	 *            phone number or shortcode
 	 * @param ton
 	 *            Type Of Network
 	 * @param npi

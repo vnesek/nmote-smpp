@@ -20,266 +20,266 @@ package com.nmote.smpp;
  */
 public class Tag {
 	/**
-	 * 
+	 *
 	 * (Type CString)
 	 * @since SMPP 34
 	 */
 	public static final int RECEIPTED_MESSAGE_ID = 0x001E;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 50
 	 */
 	public static final int NUMBER_OF_BROADCASTS = 0x0604;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 50
 	 */
 	public static final int CONGESTION_STATE = 0x0428;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int LANGUAGE_INDICATOR = 0x020D;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 34
 	 */
 	public static final int DEST_SUBADDRESS = 0x0203;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SC_INTERFACE_VERSION = 0x0210;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 34
 	 */
 	public static final int SOURCE_SUBADDRESS = 0x0202;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int ALERT_ON_MSG_DELIVERY = 0x130C;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_SERVICE_GROUP = 0x060A;
 
 	/**
-	 * 
+	 *
 	 * (Type String)
 	 * @since SMPP 34
 	 */
 	public static final int CALLBACK_NUM_ATAG = 0x0303;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_CATEGORY_SPECIFIC_INFO = 0x0602;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 34
 	 */
 	public static final int NETWORK_ERROR_CODE = 0x0423;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int ITS_REPLY_TYPE = 0x1380;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int MS_AVAILABILITY_STATUS = 0x0422;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int PAYLOAD_TYPE = 0x0019;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 34
 	 */
 	public static final int MESSAGE_PAYLOAD = 0x0424;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 34
 	 */
 	public static final int SMS_SIGNAL = 0x1203;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int SOURCE_NODE_ID = 0x060F;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 34
 	 */
 	public static final int MS_VALIDITY = 0x1204;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 34
 	 */
 	public static final int USER_MESSAGE_REFERENCE = 0x0204;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SET_DPF = 0x0421;
 
 	/**
-	 * 
+	 *
 	 * (Type String)
 	 * @since SMPP 34
 	 */
 	public static final int CALLBACK_NUM = 0x0381;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer4)
 	 * @since SMPP 50
 	 */
 	public static final int DEST_ADDR_NP_COUNTRY = 0x0613;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_AREA_IDENTIFIER = 0x0606;
 
 	/**
-	 * 
+	 *
 	 * (Type SMPPTime)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_END_TIME = 0x0609;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int BILLING_IDENTIFICATION = 0x060B;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 50
 	 */
 	public static final int DEST_ADDR_NP_RESOLUTION = 0x0611;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DPF_RESULT = 0x0420;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int MORE_MESSAGES_TO_SEND = 0x0426;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer4)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_ERROR_STATUS = 0x0607;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DEST_BEARER_TYPE = 0x0007;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer4)
 	 * @since SMPP 34
 	 */
 	public static final int QOS_TIME_TO_LIVE = 0x0017;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_CONTENT_TYPE = 0x0601;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 34
 	 */
 	public static final int SAR_MSG_REF_NUM = 0x020C;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_MESSAGE_CLASS = 0x0603;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SAR_SEGMENT_SEQNUM = 0x020F;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int USSD_SERVICE_OP = 0x0510;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
@@ -293,175 +293,175 @@ public class Tag {
 	public static final int MESSAGE_STATE = 0x0427;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DEST_NETWORK_TYPE = 0x0006;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 34
 	 */
 	public static final int DESTINATION_PORT = 0x020B;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int NUMBER_OF_MESSAGES = 0x0304;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int SOURCE_NETWORK_ID = 0x060D;
 
 	/**
-	 * 
+	 *
 	 * (Type String)
 	 * @since SMPP 34
 	 */
 	public static final int ADDITIONAL_STATUS_INFO_TEXT = 0x001D;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SOURCE_BEARER_TYPE = 0x000F;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DELIVERY_FAILURE_REASON = 0x0425;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DEST_TELEMATICS_ID = 0x0008;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer4)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_CHANNEL_INDICATOR = 0x0600;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DEST_ADDR_SUBUNIT = 0x0005;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int MS_MSG_WAIT_FACILITIES = 0x0030;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 34
 	 */
 	public static final int SOURCE_PORT = 0x020A;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int PRIVACY_INDICATOR = 0x0201;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int DEST_NETWORK_ID = 0x060E;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int DEST_ADDR_NP_INFORMATION = 0x0612;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SOURCE_TELEMATICS_ID = 0x0010;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int CALLBACK_NUM_PRES_IND = 0x0302;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int DEST_NODE_ID = 0x0610;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int DISPLAY_TIME = 0x1201;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer4)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_AREA_SUCCESS = 0x0608;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SOURCE_ADDR_SUBUNIT = 0x000D;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer2)
 	 * @since SMPP 34
 	 */
 	public static final int ITS_SESSION_INFO = 0x1383;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
 	public static final int SAR_TOTAL_SEGMENTS = 0x020E;
 
 	/**
-	 * 
+	 *
 	 * (Type OctetString)
 	 * @since SMPP 50
 	 */
 	public static final int BROADCAST_FREQUENCY_INTERVAL = 0x0605;
 
 	/**
-	 * 
+	 *
 	 * (Type Integer1)
 	 * @since SMPP 34
 	 */
@@ -542,6 +542,8 @@ public class Tag {
 	/**
 	 * Returns SMPP protocol version when this tag
 	 * has first appeared.
+	 *
+	 * @param tag SMPP tag
 	 *
 	 * @return SMPP protocol version
 	 */

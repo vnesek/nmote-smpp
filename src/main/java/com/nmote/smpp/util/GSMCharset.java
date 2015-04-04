@@ -171,6 +171,7 @@ public class GSMCharset {
 	 * Converts from GSM default charset encoded byte array into unicode String
 	 *
 	 * @param b
+	 *            GSM character encoded array
 	 * @return Unicode string representing b
 	 */
 	public static String toUnicode(byte[] b) {

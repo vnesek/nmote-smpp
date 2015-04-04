@@ -100,6 +100,7 @@ public abstract class AbstractPDU implements Cloneable, Serializable {
 	 * </pre>
 	 *
 	 * @param tag
+	 *            SMPP tag id
 	 * @return new Parameter instance
 	 */
 	public Parameter addParameter(int tag) {
@@ -267,6 +268,7 @@ public abstract class AbstractPDU implements Cloneable, Serializable {
 	 * list of optional parameters. Returns true if parameter was removed.
 	 *
 	 * @param tag
+	 *            SMPP tag id
 	 * @return true if parameter was removed, false if there was no parameter
 	 *         with specified tag
 	 */
@@ -301,6 +303,7 @@ public abstract class AbstractPDU implements Cloneable, Serializable {
 	 * SMPP status constants.
 	 *
 	 * @param status
+	 *            SMPP status code
 	 * @see ESMEStatus
 	 * @throws UnsupportedOperationException
 	 *             if this is a request PDU

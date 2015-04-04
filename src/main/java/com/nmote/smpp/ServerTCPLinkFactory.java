@@ -69,7 +69,7 @@ public class ServerTCPLinkFactory implements LinkFactory {
 	/**
 	 * Returns the port.
 	 *
-	 * @return int
+	 * @return server oirt
 	 */
 	public int getPort() {
 		return port;
@@ -78,7 +78,7 @@ public class ServerTCPLinkFactory implements LinkFactory {
 	/**
 	 * Returns the timeout.
 	 *
-	 * @return int
+	 * @return cinnect timeout
 	 */
 	public int getTimeout() {
 		return timeout;
@@ -98,6 +98,8 @@ public class ServerTCPLinkFactory implements LinkFactory {
 	 *
 	 * @param accept
 	 *            The accept to set
+	 * @throws IOException
+	 *             if server can't accept connection
 	 */
 	public void setAccept(boolean accept) throws IOException {
 		if (accept && serverSocket == null) {
@@ -151,6 +153,8 @@ public class ServerTCPLinkFactory implements LinkFactory {
 	 * @param s
 	 *            Socket to check
 	 * @return true if socket is ok.
+	 * @throws IOException
+	 *             if error happend during operation
 	 */
 	protected boolean checkSocket(Socket s) throws IOException {
 		if (log != null && log.isDebugEnabled()) {
@@ -165,6 +169,7 @@ public class ServerTCPLinkFactory implements LinkFactory {
 	 *
 	 * @return ServerSocket
 	 * @throws IOException
+	 *             if socket can't be created
 	 */
 	protected ServerSocket createServerSocket() throws IOException {
 		return new ServerSocket(getPort());
@@ -172,7 +177,7 @@ public class ServerTCPLinkFactory implements LinkFactory {
 
 	/**
 	 * Customizes socket parameters. Called after <code>checkSocket()</code>
-	 * methos.
+	 * methods.
 	 *
 	 * @param s
 	 *            Socket to customize

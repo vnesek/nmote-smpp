@@ -13,23 +13,14 @@ public abstract class MediaIE extends IE {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @param identifier
-	 */
 	public MediaIE(int identifier) {
 		super(identifier);
 	}
 
-	/**
-	 * @return
-	 */
 	public int getPosition() {
 		return position;
 	}
 
-	/**
-	 * @param i
-	 */
 	public void setPosition(int i) {
 		position = i;
 	}

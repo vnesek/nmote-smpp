@@ -20,6 +20,7 @@ public interface CommandStateListener extends EventListener {
 	 * Called when command state changes
 	 *
 	 * @param event
+	 *            object describing state change
 	 */
 	void stateChanged(CommandStateEvent event);
 }
