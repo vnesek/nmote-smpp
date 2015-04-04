@@ -1,6 +1,31 @@
 Nmote SMPP library
 ==================
 
+Java SMPP 5.0 client and server library. Supports 3.x protocol versions. BSD style license.
+
+The Short Message Peer-to-Peer (SMPP) in the telecommunications industry is an open, industry standard protocol designed to provide a flexible data communication interface for the transfer of short message data between External Short Messaging Entities (ESME), Routing Entities (RE) and Message Centres.
+
+(See https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer)
+
+
+Add to Your's Project
+---------------------
+
+If you use maven for dependency management, add following snippet to pom.xml:
+
+```xml
+	<dependencies>
+		...
+
+		<dependency>
+			<groupId>com.nmote.smpp</groupId>
+			<artifactId>nmote-smpp</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+	</dependencies>
+```
+
 Building
 --------
 To produce a JAR you will need apache maven installed. Run:
