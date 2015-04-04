@@ -1,0 +1,15 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} - %-5level %logger{32} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org" level="info" />
+	<logger name="com.nmote.smpp" level="trace" />
+
+	<root>
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

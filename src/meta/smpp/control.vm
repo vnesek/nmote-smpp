@@ -1,0 +1,13 @@
+Copyright (c) Nmote d.o.o 2003-2015
+
+SMPP protocol class generator.
+Using protocol file: $task.smppFile
+
+Generating classes in a package $package
+#foreach ($pdu in $protocol.PDUs)
+#set ($name = $format.classCase(${pdu.name}) )
+Generating $name $generator.parse("pdu.vm", "${name}PDU.java", "pdu", $pdu) Done.
+#end
+Generating Tag $generator.parse("tag.vm", "Tag.java", "", "") Done.
+Generating PDU $generator.parse("pduconst.vm", "PDU.java", "", "") Done.
+Generating PDUFactory $generator.parse("pdufactory.vm", "PDUFactory.java", "", "") Done.

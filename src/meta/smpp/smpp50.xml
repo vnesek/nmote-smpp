@@ -1,0 +1,736 @@
+<?xml version='1.0' encoding="iso-8859-1"?>
+<!--
+ * Copyright (c) Nmote d.o.o. 2003. All rights reserved.
+ * Unathorized use of this file is prohibited by law.
+ * See LICENSE.txt for licensing information.
+-->
+
+<protocol>
+<pdus>
+ <pdu name="bind_transmitter" id="00000002">
+  <mandatory>
+system_id
+password
+system_type
+interface_version
+address_range
+  </mandatory>
+  <doc>Authentication PDU used by a transmitter ESME to bind to
+the Message Centre. The PDU contains identification
+information and an access password for the ESME.</doc>
+ </pdu>
+
+ <pdu name="bind_transmitter_resp" id="80000002">
+  <mandatory>
+system_id
+  </mandatory>
+  <optional>
+sc_interface_version
+  </optional>
+  <doc>Message Centre response to a bind_transmitter PDU. This
+PDU indicates the success or failure of the ESME's attempt
+to bind as a transmitter</doc>
+ </pdu>
+
+ <pdu name="bind_receiver" id="00000001">
+  <mandatory>
+system_id
+password
+system_type
+interface_version
+address_range
+  </mandatory>
+  <doc>Authentication PDU used by a receiver ESME to bind to the
+Message Centre. The PDU contains identification information,
+an access password for the ESME and may also contain
+routing information specifying the range of addresses
+serviced by the ESME.</doc>
+ </pdu>
+
+ <pdu name="bind_receiver_resp" id="80000001">
+  <mandatory>
+system_id
+  </mandatory>
+  <optional>
+sc_interface_version
+  </optional>
+  <doc>Message Centre response to a bind_receiver PDU. This PDU
+indicates the success or failure of the ESME's attempt to bind
+as a receiver</doc>
+ </pdu>
+
+ <pdu name="bind_transceiver" id="00000009">
+  <mandatory>
+system_id
+password
+system_type
+interface_version
+address_range
+  </mandatory>
+  <doc>Authentication PDU used by a transceiver ESME to bind to
+the Message Centre. The PDU contains identification
+information, an access password for the ESME and may also
+contain routing information specifying the range of addresses
+serviced by the ESME.</doc>
+ </pdu>
+
+ <pdu name="bind_transceiver_resp" id="80000009">
+  <mandatory>
+system_id
+  </mandatory>
+  <optional>
+sc_interface_version
+  </optional>
+  <doc>Message Centre response to a bind_transceiver PDU. This
+PDU indicates the success or failure of the ESME's attempt
+to bind as a transceiver</doc>
+ </pdu>
+
+ <pdu name="outbind" id="0000000B">
+  <mandatory>
+system_id
+password
+  </mandatory>
+  <doc>Authentication PDU used by a Message Centre to Outbind to
+an ESME to inform it that messages are present in the MC.
+The PDU contains identification, and access password for the
+ESME. If the ESME authenticates the request, it will respond
+with a bind_receiver or bind_transceiver to begin the process
+of binding into the MC.</doc>
+ </pdu>
+
+ <pdu name="unbind" id="000000006">
+  <doc>This PDU can be sent by the ESME or MC as a means of
+initiating the termination of a SMPP session.</doc>
+ </pdu>
+
+ <pdu name="unbind_resp" id="80000006">
+  <doc>This PDU can be sent by the ESME or MC as a means of
+acknowledging the receipt of an unbind request. After
+sending this PDU the MC typically closes the network
+connection.
+  </doc>
+ </pdu>
+
+ <pdu name="enquire_link" id="00000015">
+  <doc>This PDU can be sent by the ESME or MC to test the network
+connection. The receiving peer is expected to acknowledge
+the PDU as a means of verifying the test.
+  </doc>
+ </pdu>
+
+ <pdu name="enquire_link_resp" id="80000015">
+  <doc>This PDU is used to acknowledge an enquire_link request
+sent by an ESME or MC.</doc>
+ </pdu>
+
+ <pdu name="alert_notification" id="00000102">
+  <mandatory>
+source_addr
+esme_addr
+  </mandatory>
+  <optional>
+ms_availability_status
+  </optional>
+  <doc>ToBeDocumented</doc>
+ </pdu>
+
+ <pdu name="generic_nack" id="80000000">
+  <doc>A MC sends an alert_notification to an ESME as a means of
+altering it to the availability of an SME.
+  </doc>
+ </pdu>
+
+ <pdu name="submit_sm" id="00000004">
+  <mandatory>
+service_type
+source_addr
+dest_addr
+esm_class
+protocol_id
+priority_flag
+schedule_delivery_time
+validity_period
+registered_delivery
+replace_if_present_flag
+data_coding
+sm_default_msg_id
+short_message
+  </mandatory>
+  <optional>
+alert_on_msg_delivery
+billing_identification
+callback_num
+callback_num_atag
+callback_num_pres_ind
+dest_addr_subunit
+dest_bearer_type
+dest_network_type
+dest_subaddress
+dest_telematics_id
+destination_port
+display_time
+its_reply_type
+its_session_info
+language_indicator
+message_payload
+more_messages_to_send
+ms_msg_wait_facilities
+ms_validity
+number_of_messages
+payload_type
+privacy_indicator
+qos_time_to_live
+sar_msg_ref_num
+sar_segment_seqnum
+sar_total_segments
+set_dpf
+sms_signal
+source_addr_subunit
+source_bearer_type
+source_network_type
+source_port
+source_subaddress
+source_telematics_id
+user_message_reference
+user_response_code
+ussd_service_op
+  </optional>
+  <doc>A transmitter or transceiver ESME, wishing to submit a short
+message, can use this PDU to specify the sender, receiver
+text of the short message. Other attributes include message
+priority, data coding scheme, validity period etc.
+  </doc>
+ </pdu>
+
+ <pdu name="submit_sm_resp" id="80000004">
+  <mandatory>
+message_id
+  </mandatory>
+  <optional>
+additional_status_info_text
+delivery_failure_reason
+dpf_result
+network_error_code
+  </optional>
+  <doc>The MC response to a submit_sm PDU, indicating the success
+or failure of the request. Also included is a MC message_id
+can be used in subsequent operations to query, cancel or
+replace the contents of an undelivered message.</doc>
+ </pdu>
+
+ <pdu name="data_sm" id="00000103">
+  <mandatory>
+service_type
+source_addr
+dest_addr
+esm_class
+registered_delivery
+data_coding
+  </mandatory>
+  <optional>
+alert_on_msg_delivery
+billing_identification
+callback_num
+callback_num_atag
+callback_num_pres_ind
+dest_addr_subunit
+dest_bearer_type
+dest_network_type
+dest_subaddress
+dest_telematics_id
+destination_port
+display_time
+its_reply_type
+its_session_info
+language_indicator
+message_payload
+more_messages_to_send
+ms_msg_wait_facilities
+ms_validity
+number_of_messages
+payload_type
+privacy_indicator
+qos_time_to_live
+sar_msg_ref_num
+sar_segment_seqnum
+sar_total_segments
+set_dpf
+sms_signal
+source_addr_subunit
+source_bearer_type
+source_network_type
+source_port
+source_subaddress
+source_telematics_id
+user_message_reference
+user_response_code
+ussd_service_op
+  </optional>
+  <doc>Data_sm is a streamlined version of the submit_sm operation,
+designed for packet-based applications that do not demand
+extended functionality normally available in the submit_sm
+operation. ESMEs implementing WAP over SMS typically use
+this operation.
+  </doc>
+ </pdu>
+
+ <pdu name="data_sm_resp" id="80000103">
+  <mandatory>
+message_id
+  </mandatory>
+  <optional>
+additional_status_info_text
+delivery_failure_reason
+dpf_result
+network_error_code
+  </optional>
+  <doc>The MC response to a data_sm PDU, indicating the success
+failure of the request. Also included is a MC message_id that
+can be used in subsequent operations to query, cancel or
+replace the contents of an undelivered message.</doc>
+ </pdu>
+
+ <pdu name="submit_multi" id="00000021">
+  <mandatory>
+service_type
+source_addr
+dest_addresses
+esm_class
+protocol_id
+priority_flag
+schedule_delivery_time
+validity_period
+registered_delivery
+replace_if_present_flag
+data_coding
+sm_default_msg_id
+short_message
+  </mandatory>
+  <optional>
+alert_on_msg_delivery
+billing_identification
+callback_num
+callback_num_atag
+callback_num_pres_ind
+dest_addr_subunit
+dest_bearer_type
+dest_network_type
+dest_subaddress
+dest_telematics_id
+destination_port
+display_time
+its_reply_type
+its_session_info
+language_indicator
+message_payload
+more_messages_to_send
+ms_msg_wait_facilities
+ms_validity
+number_of_messages
+payload_type
+privacy_indicator
+qos_time_to_live
+sar_msg_ref_num
+sar_segment_seqnum
+sar_total_segments
+set_dpf
+sms_signal
+source_addr_subunit
+source_bearer_type
+source_network_type
+source_port
+source_subaddress
+source_telematics_id
+user_message_reference
+user_response_code
+ussd_service_op
+  </optional>
+  <doc>A variation of the submit_sm PDU that included support for
+255 recipients for the given message.</doc>
+ </pdu>
+
+ <pdu name="submit_multi_resp" id="80000021">
+  <mandatory>
+message_id
+unsucess_sme
+  </mandatory>
+  <optional>
+additional_status_info_text
+delivery_failure_reason
+dpf_result
+network_error_code
+  </optional>
+  <doc>The MC response to a submit_multi PDU. This is similar to
+submit_sm_resp PDU. The main difference is that where some
+of the specified recipients were either invalid or rejected by
+Message Centre, the PDU can specify the list of failed
+recipients, appending a specific error code for each one,
+indicating the reason the recipient was invalid. Also included
+MC message_id that can be used in subsequent operations
+query, cancel or replace the contents of an undelivered
+message.</doc>
+ </pdu>
+
+ <pdu name="deliver_sm" id="00000005">
+  <mandatory>
+service_type
+source_addr
+dest_addr
+esm_class
+protocol_id
+priority_flag
+schedule_delivery_time
+validity_period
+registered_delivery
+replace_if_present_flag
+data_coding
+sm_default_msg_id
+short_message
+  </mandatory>
+  <optional>
+callback_num
+callback_num_atag
+callback_num_pres_ind
+dest_addr_subunit
+dest_subaddress
+destination_port
+dpf_result
+its_reply_type
+its_session_info
+language_indicator
+message_payload
+message_state
+network_error_code
+payload_type
+privacy_indicator
+receipted_message_id
+sar_msg_ref_num
+sar_segment_seqnum
+sar_total_segments
+source_addr_subunit
+source_port
+source_subaddress
+user_message_reference
+user_response_code
+ussd_service_op
+  </optional>
+  <doc>Deliver_sm is the symmetric opposite to submit_sm and is used by
+a MC to deliver a message to a receiver or transceiver ESME.
+  </doc>
+ </pdu>
+
+ <pdu name="deliver_sm_resp" id="80000005">
+  <mandatory>
+message_id
+  </mandatory>
+  <optional>
+additional_status_info_text
+delivery_failure_reason
+network_error_code
+  </optional>
+  <doc>This PDU indicates the ESMEs acceptance or rejection of the
+delivered message. The error returned by the ESME can cause the
+message to be retried at a later date or rejected there and then.
+  </doc>
+ </pdu>
+
+ <pdu name="broadcast_sm" id="00000111">
+  <mandatory>
+service_type
+source_addr
+message_id
+priority_flag
+schedule_delivery_time
+validity_period
+replace_if_present_flag
+data_coding
+sm_default_msg_id
+  </mandatory>
+  <optional>
+broadcast_area_identifier
+broadcast_category_specific_info
+broadcast_content_type
+number_of_broadcasts
+broadcast_frequency_interval
+user_message_reference
+source_port
+source_addr_subunit
+destination_port
+dest_addr_subunit
+payload_type
+message_payload
+privacy_indicator
+callback_num
+callback_num_pres_ind
+callback_num_atag
+source_subaddress
+dest_subaddress
+display_time
+sms_signal
+ms_validity
+alert_on_msg_delivery
+language_indicator
+broadcast_message_class
+broadcast_channel_indicator
+broadcast_service_group
+  </optional>
+  <doc>A broadcast ESME, wishing to broadcast a short message, can
+use this PDU to specify the alias, geographical areas, and text of
+the short message.
+  </doc>
+ </pdu>
+
+ <pdu name="broadcast_sm_resp" id="80000111">
+  <mandatory>
+message_id
+  </mandatory>
+  <optional>
+<!-- failed_broadcast_area_identifier -->
+broadcast_area_identifier
+broadcast_error_status
+  </optional>
+  <doc>The MC response to a broadcast_sm PDU, indicating the success
+or failure of the request. Also included is a MC message_id that
+can be used in subsequent operations to query or cancel the
+message.
+  </doc>
+ </pdu>
+
+ <pdu name="cancel_sm" id="00000008">
+  <mandatory>
+service_type
+message_id
+source_addr
+dest_addr
+  </mandatory>
+  <doc>This PDU is used to cancel a previously submitted message.
+The PDU contains the source address of the original
+message and the message_id returned in the original
+submit_sm_resp, submit_multi_resp or data_sm_resp PDU.
+This PDU may also omit the message_id and instead contain
+a source address, destination address and optional
+service_type field as a means of cancelling a range of
+messages sent from one address to another.
+  </doc>
+ </pdu>
+
+ <pdu name="cancel_sm_resp" id="80000008">
+  <doc>The MC returns this PDU to indicate the success or failure of
+a cancel_sm PDU.
+  </doc>
+ </pdu>
+
+ <pdu name="query_sm" id="00000003">
+  <mandatory>
+message_id
+source_addr
+  </mandatory>
+  <doc>This PDU is used to query the state of a previously submitted
+message. The PDU contains the source address of the
+original message and the message_id returned in the original
+submit_sm_resp, submit_multi_resp or data_sm_resp PDU.
+  </doc>
+ </pdu>
+
+ <pdu name="query_sm_resp" id="80000003">
+  <mandatory>
+message_id
+final_date
+message_state
+error_code
+  </mandatory>
+  <doc>The MC returns a query_sm_resp PDU as a means of
+indicating the result of a message query attempt. The PDU
+will indicate the success or failure of the attempt and for
+successful attempts will also include the current state of the
+message.
+  </doc>
+ </pdu>
+
+ <pdu name="replace_sm" id="80000007">
+  <mandatory>
+message_id
+source_addr
+schedule_delivery_time
+validity_period
+registered_delivery
+sm_default_msg_id
+short_message
+  </mandatory>
+  <optional>
+message_payload
+  </optional>
+  <doc>The replace_sm PDU is used by an ESME to pass a
+message_id of a previously submitted message along with
+several other fields used to update the text, validity period
+and other attributes of the message.
+  </doc>
+ </pdu>
+
+ <pdu name="replace_sm_resp" id="00000007">
+  <doc>The replace_sm_resp PDU indicates the success or failure of
+a replace_sm PDU.</doc>
+ </pdu>
+
+ <pdu name="cancel_broadcast_sm" id="00000113">
+  <mandatory>
+service_type
+message_id
+source_addr
+  </mandatory>
+  <optional>
+broadcast_content_type
+user_message_reference
+  </optional>
+  <doc>This PDU is used to cancel the state of a previously
+broadcast message.</doc>
+ </pdu>
+
+ <pdu name="cancel_broadcast_sm_resp" id="80000113">
+  <mandatory>
+message_id
+  </mandatory>
+  <optional>
+message_state
+broadcast_area_identifier
+broadcast_area_success
+broadcast_end_time
+user_message_reference
+  </optional>
+  <doc>Response to cancel_broadcast_sm PDU.</doc>
+ </pdu>
+
+ <pdu name="query_broadcast_sm" id="00000112">
+  <mandatory>
+message_id
+source_addr
+  </mandatory>
+  <optional>
+user_message_reference
+  </optional>
+  <doc>This PDU is used to query the state of a previously broadcast
+message. The PDU contains the source address of the
+original message and the message_id returned in the original
+broadcast_sm_resp PDU.
+  </doc>
+ </pdu>
+
+ <pdu name="query_broadcast_sm_resp" id="80000112">
+  <mandatory>
+message_id
+  </mandatory>
+  <optional>
+message_state
+broadcast_area_identifier
+broadcast_area_success
+broadcast_end_time
+user_message_reference
+  </optional>
+  <doc>The MC returns a query_broadcast_sm_resp PDU as a
+means of indicating the result of a broadcast query attempt.
+The PDU will indicate the success or failure of the attempt
+and for successful attempts will also include the current state
+of the message.</doc>
+ </pdu>
+</pdus>
+
+<params>
+ <!-- Mandatory parameters -->
+ <param name="data_coding" type="Integer1" doc="Data coding scheme (see GSM 03.38)"/>
+ <param name="dest_addr" type="SMPPAddress" doc="Specifies the destination SME address. For mobile terminated messages, this is the directory number of the recipient MS."/>
+ <param name="dest_addresses" type="SMPPAddress" doc=""/> <!-- change -->
+ <param name="unsucess_sme" type="CString" doc=""/> <!-- change -->
+ <param name="dest_flag" type="Integer4" doc=""/> <!-- check -->
+ <param name="dl_name" type="CString" doc=""/> <!-- check -->
+ <param name="esme_addr" type="SMPPAddress" doc="Specifies the address of an ESME address to which an alert_notification should be routed."/>
+ <param name="address_range" type="SMPPAddress" doc=""/>
+ <param name="esm_class" type="Integer1" doc="The esm_class parameter is used to indicate special message attributes associated with the short message."/>
+ <param name="final_date" type="SMPPTime" doc=""/>
+ <param name="interface_version" type="Integer1" def="0x34" doc="This parameter is used to indicate the version of the SMPP protocol."/>
+ <param name="message_id" type="CString" doc="The unique message identifier reference assigned by the MC to each submitted short message. It is an opaque value and is set according to MC implementation."/>
+ <param name="no_unsuccess" type="Integer4" doc=""/> <!-- check -->
+ <param name="number_of_dests" type="Integer1" doc=""/> <!-- check -->
+ <param name="password" type="CString" doc=""/>
+ <param name="priority_flag" type="Integer1" doc=""/>
+ <param name="protocol_id" type="Integer1" doc=""/>
+ <param name="registered_delivery" type="Integer1" doc=""/>
+ <param name="replace_if_present_flag" type="Boolean" doc=""/>
+ <param name="schedule_delivery_time" type="SMPPTime" doc=""/>
+ <param name="validity_period" type="SMPPTime" doc=""/>
+ <param name="service_type" type="CString" doc=""/>
+ <param name="short_message" type="PString" doc=""/>
+ <param name="sm_default_msg_id" type="Integer1" doc=""/>
+ <param name="error_code" type="Integer1" doc=""/>
+ <param name="source_addr" type="SMPPAddress" doc=""/>
+ <param name="system_id" type="CString" doc=""/>
+ <param name="system_type" type="CString" doc=""/>
+
+ <!-- TLV definitions -->
+  <param name="additional_status_info_text" tag="001D" type="String" version="34" doc=""/>
+  <param name="alert_on_msg_delivery" tag="130C" type="Integer1" version="34" doc=""/>
+ <param name="billing_identification" tag="060B" type="OctetString" version="50" doc=""/>
+ <param name="broadcast_area_identifier" tag="0606" type="OctetString" version="50" doc=""/>
+ <!-- param name="failed_broadcast_area_identifier" tag="0607" type="OctetString" version="50"/ -->
+ <param name="broadcast_area_success" tag="0608" type="Integer4"  version="50" doc=""/>
+ <param name="broadcast_category_specific_info" tag="0602" type="OctetString" version="50" doc=""/>
+ <param name="broadcast_channel_indicator" tag="0600" type="Integer4"  version="50" doc=""/>
+ <param name="broadcast_content_type" tag="0601" type="OctetString" version="50" doc=""/>
+ <param name="broadcast_end_time" tag="0609" type="SMPPTime" version="50" doc=""/>
+ <param name="broadcast_error_status" tag="0607" type="Integer4" version="50" doc=""/>
+ <param name="broadcast_frequency_interval" tag="0605" type="OctetString" version="50" doc=""/>
+ <param name="broadcast_message_class" tag="0603" type="Integer1" version="50" doc=""/>
+ <param name="broadcast_service_group" tag="060A" type="OctetString" version="50" doc=""/>
+  <param name="callback_num" tag="0381" type="String" version="34" doc=""/>
+  <param name="callback_num_atag" tag="0303" type="String" version="34" doc=""/>
+  <param name="callback_num_pres_ind" tag="0302" type="Integer1" version="34" doc=""/>
+ <param name="congestion_state" tag="0428" type="Integer1" version="50" doc=""/>
+  <param name="delivery_failure_reason" tag="0425" type="Integer1" version="34" doc=""/>
+ <param name="dest_addr_np_country" tag="0613" type="Integer4" version="50" doc=""/>
+ <param name="dest_addr_np_information" tag="0612" type="OctetString" version="50" doc=""/>
+ <param name="dest_addr_np_resolution" tag="0611" type="Integer1" version="50" doc=""/>
+  <param name="dest_addr_subunit" tag="0005" type="Integer1" version="34" doc=""/>
+  <param name="dest_bearer_type" tag="0007" type="Integer1" version="34" doc=""/>
+ <param name="dest_network_id" tag="060E" type="OctetString" version="50" doc=""/>
+  <param name="dest_network_type" tag="0006" type="Integer1" version="34" doc=""/>
+ <param name="dest_node_id" tag="0610" type="OctetString" version="50" doc=""/>
+  <param name="dest_subaddress" tag="0203" type="OctetString" version="34" doc=""/>
+  <param name="dest_telematics_id" tag="0008" type="Integer1" version="34" doc=""/>
+  <param name="display_time" tag="1201" type="Integer1" version="34" doc=""/>
+  <param name="destination_port" tag="020B" type="Integer2" version="34" doc=""/>
+  <param name="dpf_result" tag="0420" type="Integer1" version="34" doc=""/>
+  <param name="its_reply_type" tag="1380" type="Integer1" version="34" doc=""/>
+  <param name="its_session_info" tag="1383" type="Integer2" version="34" doc=""/>
+  <param name="language_indicator" tag="020D" type="Integer1" version="34" doc=""/>
+  <param name="message_payload" tag="0424" type="OctetString" version="34" doc=""/>
+  <param name="message_state" tag="0427" type="Integer1" version="34" doc="The message_state value is returned by the MC to the ESME as part of the query_sm_resp PDU."/>
+  <param name="more_messages_to_send" tag="0426" type="Integer1" version="34" doc=""/>
+  <param name="ms_availability_status" tag="0422" type="Integer1" version="34" doc=""/>
+  <param name="ms_msg_wait_facilities" tag="0030" type="Integer1" version="34" doc=""/>
+  <param name="ms_validity" tag="1204" type="OctetString" version="34" doc=""/>
+  <param name="network_error_code" tag="0423" type="OctetString" version="34" doc=""/>
+ <param name="number_of_broadcasts" tag="0604" type="Integer2" version="50" doc=""/>
+  <param name="number_of_messages" tag="0304" type="Integer1" version="34" doc=""/>
+  <param name="payload_type" tag="0019" type="Integer1" version="34" doc=""/>
+  <param name="privacy_indicator" tag="0201" type="Integer1" version="34" doc=""/>
+  <param name="qos_time_to_live" tag="0017" type="Integer4" version="34" doc=""/>
+  <param name="receipted_message_id" tag="001E" type="CString" version="34" doc=""/>
+  <param name="sar_msg_ref_num" tag="020C" type="Integer2" version="34" doc=""/>
+  <param name="sar_total_segments" tag="020E" type="Integer1" version="34" doc=""/>
+  <param name="sar_segment_seqnum" tag="020F" type="Integer1" version="34" doc=""/>
+  <param name="sc_interface_version" type="Integer1" tag="0210" default="0x34" version="34" doc=""/>
+  <param name="set_dpf" tag="0421" type="Integer1" version="34" doc=""/>
+  <param name="sms_signal" tag="1203" type="Integer2" version="34" doc=""/>
+  <param name="source_addr_subunit" tag="000D" type="Integer1" version="34" doc=""/>
+  <param name="source_bearer_type" tag="000F" type="Integer1" version="34" doc=""/>
+ <param name="source_network_id" tag="060D" type="OctetString" version="50" doc=""/>
+  <param name="source_network_type" tag="000E" type="Integer1" version="34" doc=""/>
+ <param name="source_node_id" tag="060F" type="OctetString" version="50" doc=""/>
+  <param name="source_port" tag="020A" type="Integer2" version="34" doc=""/>
+  <param name="source_subaddress" tag="0202" type="OctetString" version="34" doc=""/>
+  <param name="source_telematics_id" tag="0010" type="Integer1" version="34" doc=""/>
+  <param name="user_message_reference" tag="0204" type="Integer2" version="34" doc=""/>
+  <param name="user_response_code" tag="0205" type="Integer1" version="34" doc=""/>
+  <param name="ussd_service_op" tag="0510" type="Integer1" version="34" doc=""/>
+</params>
+</protocol>

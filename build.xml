@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is an ANT build script. ANT is a Java based build tool. -->
+<!-- It is availale from http://jakarta.apache.org/ant/                -->
+
+<!-- Generates java PDU source files in target/generated-sources. Copy from
+     there to src/main/java if you need to modify protocol definition. -->
+<project default="smpp-gen" name="Nmote SMPP">
+	<property file="build.properties" />
+
+	<path id="smppgen.path">
+		<pathelement path="${smppgen.lib}/commons-collections.jar" />
+		<pathelement path="${smppgen.lib}/commons-logging.jar" />
+		<pathelement path="${smppgen.lib}/commons-lang.jar" />
+		<pathelement path="${smppgen.lib}/log4j.jar" />
+		<pathelement path="${smppgen.lib}/velocity-1.3.jar" />
+	</path>
+
+	<!-- ================================================================= -->
+	<!-- Initialize variables                                              -->
+	<!-- ================================================================= -->
+	<target name="init">
+		<mkdir dir="${jar.dest}" />
+		<mkdir dir="${javac.dest}" />
+		<mkdir dir="${smppgen.dest}" />
+		<tstamp />
+	</target>
+
+	<!-- ================================================================= -->
+	<!-- Build source generator.                                           -->
+	<!-- ================================================================= -->
+	<target depends="init" name="build-smpp-ant-task">
+		<javac includeantruntime="true" classpathref="smppgen.path" destdir="${javac.dest}">
+			<src path="${smppgen.src}" />
+			<include name="com/nmote/smpp/task/*.java" />
+		</javac>
+		<jar jarfile="${jar.dest}/nmote-smpp-ant.jar">
+			<fileset dir="${javac.dest}">
+				<include name="com/nmote/smpp/task/*.class" />
+			</fileset>
+		</jar>
+	</target>
+
+	<!-- ================================================================= -->
+	<!-- Generate SMPP PDU source files.                                   -->
+	<!-- ================================================================= -->
+	<target depends="build-smpp-ant-task" name="smpp-gen">
+		<taskdef name="smppgen" classname="com.nmote.smpp.task.SMPPGeneratorTask">
+			<classpath>
+				<path refid="smppgen.path" />
+				<pathelement location="${jar.dest}/nmote-smpp-ant.jar" />
+			</classpath>
+		</taskdef>
+		<delete>
+			<fileset dir="${smppgen.dest}" includes="**/*.java" />
+		</delete>
+		<mkdir dir="${smppgen.dest}" />
+		<smppgen controlTemplate="control.vm" outputDirectory="${smppgen.dest}/com/nmote/smpp" outputFile="codegen.log" smppFile="${smppgen.protocol}" targetPackage="com.nmote.smpp" templatePath="${smppgen.templates}" />
+	</target>
+
+</project>
