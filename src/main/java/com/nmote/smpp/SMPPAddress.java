@@ -26,13 +26,13 @@ public class SMPPAddress implements Serializable, Cloneable {
 	/**
 	 * TON - Unknown. "Unknown" is used when the user or network has no a priori
 	 * information about the numbering plan. In this case, the Address-Value
-	 * field is organized according to the network dialling plan, e.g. prefix or
+	 * field is organized according to the network dialing plan, e.g. prefix or
 	 * escape digits might be present.
 	 */
 	public static final int TON_UNKNOWN = 0x00;
 
 	/**
-	 * TON - International. Most common TOM. The international format shall be
+	 * TON - International. Most common TON. The international format shall be
 	 * accepted also when the message is destined to a recipient in the same
 	 * country as the MSC or as the SGSN.
 	 */
