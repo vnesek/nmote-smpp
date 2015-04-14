@@ -29,6 +29,19 @@ public class Parameter {
 	}
 
 	/**
+	 * Constructor for TLV.
+	 *
+	 * @param tag
+	 *            SMPP tag code
+	 * @param data
+	 *            parameter value
+	 */
+	public Parameter(int tag, byte[] data) {
+		setTag(tag);
+		setData(data);
+	}
+
+	/**
 	 * Returns the data.
 	 *
 	 * @return byte[]
@@ -68,8 +81,16 @@ public class Parameter {
 	public String getString() {
 		String result;
 		if (data != null) {
+			if (data.length == 0) {
+				return "";
+			}
 			try {
-				result = new String(data, "ISO-8859-1");
+				// Special case C-style zero terminated strings
+				if (data[data.length - 1] == 0) {
+					result = new String(data, 0, data.length - 1, "ISO-8859-1");
+				} else {
+					result = new String(data, "ISO-8859-1");
+				}
 			} catch (UnsupportedEncodingException e) {
 				throw new RuntimeException("Impossible");
 			}
