@@ -26,6 +26,13 @@ If you use maven for dependency management, add following snippet to pom.xml:
 	</dependencies>
 ```
 
+Changes
+-------
+
+1.7.1 New sample class (SmscConnection), starting point for integration into other projects.
+      Added MessageState constants. Fixed DCS UCS-3 decoding. Few javadoc typos and few
+      helper methods added.
+
 Building
 --------
 To produce a JAR you will need apache maven installed. Run:

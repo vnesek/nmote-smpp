@@ -15,7 +15,7 @@ public class About {
 
 	public static final int MAJOR = 1;
 	public static final int MINOR = 7;
-	public static final int REVISION = 0;
+	public static final int REVISION = 1;
 
 	static final long SERIAL_VERSION_UID = MAJOR * 100 + MINOR * 10 + REVISION;
 

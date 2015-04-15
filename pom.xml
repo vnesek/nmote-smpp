@@ -4,7 +4,7 @@
 	<groupId>com.nmote.smpp</groupId>
 	<artifactId>nmote-smpp</artifactId>
 	<name>Nmote SMPP library</name>
-	<version>1.7.0</version>
+	<version>1.7.1</version>
 	<description>Nmote Java SMPP 5.0 client/server library</description>
 	<packaging>jar</packaging>
 	<url>https://github.com/vnesek/nmote-smpp</url>
