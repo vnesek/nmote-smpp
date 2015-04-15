@@ -30,7 +30,7 @@ Changes
 -------
 
 1.7.1 New sample class (SmscConnection), starting point for integration into other projects.
-      Added MessageState constants. Fixed DCS UCS-3 decoding. Few javadoc typos and few
+      Added MessageState constants. Fixed DCS UCS-2 unicode decoding/encoding. Few javadoc typos and few
       helper methods added.
 
 Building
