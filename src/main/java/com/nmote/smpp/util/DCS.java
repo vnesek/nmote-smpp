@@ -16,44 +16,23 @@ import com.nmote.util.Hex;
  */
 public class DCS {
 
+
 	public static final int CHARSET_GSM = 0;
-	public static final int CHARSET_8BIT = 1;
-	public static final int CHARSET_UCS2 = 2;
-	public static final int CHARSET_RESERVED = 3;
+	public static final int CHARSET_IA5 = 1;
+	public static final int CHARSET_8BIT = 2;
+	public static final int CHARSET_LATIN1 = 3;
+	public static final int CHARSET_8BIT_ALT = 4;
+	public static final int CHARSET_JIS = 5;
+	public static final int CHARSET_CYRILIC = 6;
+	public static final int CHARSET_LATIN_HEBREW = 7;
+	public static final int CHARSET_UCS2 = 8;
+	public static final int CHARSET_PICTOGRAM = 9;
+	public static final int CHARSET_ISO_2022_JP = 10;
+	public static final int CHARSET_EXTENDED_KANJI = 13;
+	public static final int CHARSET_KS_C_5601 = 14;
 
 	public static int decodeDCS(int dcs) {
-		int result = CHARSET_8BIT;
-		if (dcs == 0x00) {
-			result = CHARSET_GSM;
-		} else if ((dcs & 0xC0) == 0) {
-			// General data coding indication
-			switch (dcs & 0x0C) {
-			case 0x00:
-				result = CHARSET_GSM;
-				break;
-			case 0x04:
-				result = CHARSET_8BIT;
-				break;
-			case 0x08:
-				result = CHARSET_UCS2;
-				break;
-			case 0x0C:
-				result = CHARSET_RESERVED;
-				break;
-			}
-		} else if ((dcs & 0xF0) == 0xF0) {
-			// Data coding + message class
-			switch (dcs & 0x02) {
-			case 0x00:
-				result = CHARSET_GSM;
-				break;
-			case 0x02:
-				result = CHARSET_8BIT;
-				break;
-			}
-		}
-
-		return result;
+		return dcs & 0x0F;
 	}
 
 	/**
@@ -84,7 +63,13 @@ public class DCS {
 				result = GSMCharset.toGSM(s);
 				break;
 			case CHARSET_UCS2:
-				result = s.getBytes("ucs2");
+				result = s.getBytes("utf-16be");
+				break;
+			case CHARSET_CYRILIC:
+				result = s.getBytes("iso-8859-5");
+				break;
+			case CHARSET_LATIN_HEBREW:
+				result = s.getBytes("iso-8859-8");
 				break;
 			default:
 				result = s.getBytes("iso-8859-1");
@@ -125,7 +110,13 @@ public class DCS {
 				result = GSMCharset.toUnicode(data);
 				break;
 			case CHARSET_UCS2:
-				result = new String(data, "utf-16");
+				result = new String(data, "utf-16be");
+				break;
+			case CHARSET_CYRILIC:
+				result = new String(data, "iso-8859-5");
+				break;
+			case CHARSET_LATIN_HEBREW:
+				result = new String(data, "iso-8859-8");
 				break;
 			default:
 				result = new String(data, "iso-8859-1");
