@@ -50,10 +50,33 @@ public class Parameter {
 		return data;
 	}
 
+	/**
+	 * Uses getInt1(), getInt2() or getInt4() depending on actual data length.
+	 *
+	 * @return integer value
+	 */
+	public int getInt() {
+		int result;
+		switch (data.length) {
+		case 1:
+			result = getInt1();
+			break;
+		case 2:
+			result = getInt2();
+			break;
+		case 4:
+			result = getInt4();
+			break;
+		default:
+			throw new IllegalStateException("integer should be 1, 2 or 4 bytes long: " + this);
+		}
+		return result;
+	}
+
 	public int getInt1() {
 		int len = getLength();
 		if (len < 1) {
-			throw new IllegalStateException("Data length too short");
+			throw new IllegalStateException("expected length >= 1: " + this);
 		}
 		return data[0];
 	}
@@ -61,7 +84,7 @@ public class Parameter {
 	public int getInt2() {
 		int len = getLength();
 		if (len < 2) {
-			throw new IllegalStateException("Data length too short");
+			throw new IllegalStateException("expected length >= 2: " + this);
 		}
 		return (data[0] << 8) | (data[1]);
 	}
@@ -69,7 +92,7 @@ public class Parameter {
 	public int getInt4() {
 		int len = getLength();
 		if (len < 4) {
-			throw new IllegalStateException("Data length too short");
+			throw new IllegalStateException("expected length >= 4: " + this);
 		}
 		return (data[0] << 24) | (data[1] << 16) | (data[0] << 8) | (data[1]);
 	}
@@ -92,7 +115,7 @@ public class Parameter {
 					result = new String(data, "ISO-8859-1");
 				}
 			} catch (UnsupportedEncodingException e) {
-				throw new RuntimeException("Impossible");
+				throw new RuntimeException("impossible");
 			}
 		} else {
 			result = null;
@@ -143,7 +166,7 @@ public class Parameter {
 			try {
 				data = value.getBytes("ISO-8859-1");
 			} catch (UnsupportedEncodingException e) {
-				throw new RuntimeException("Impossible");
+				throw new RuntimeException("impossible");
 			}
 		} else {
 			data = null;
@@ -169,6 +192,6 @@ public class Parameter {
 		return b.toString();
 	}
 
-	private int tag;
 	private byte[] data;
+	private int tag;
 }
