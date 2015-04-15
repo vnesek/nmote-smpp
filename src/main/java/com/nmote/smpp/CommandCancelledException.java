@@ -6,8 +6,8 @@
 package com.nmote.smpp;
 
 /**
- * CommandCancelledException is throwed from synchronous Session calls if
- * command was cancelled before method completition.
+ * CommandCancelledException is thrown from synchronous Session calls if
+ * command was cancelled before method competition.
  *
  * @author Vjekoslav Nesek
  */

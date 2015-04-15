@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * DispatchProcessor represents SMPP session state. DispatchProcessor maintans
+ * DispatchProcessor represents SMPP session state. DispatchProcessor maintains
  * registry of Processors used to process Commands and dispatches command to a
  * correct processor. DefaultProcessor is used to process commands without
  * registered Processor. This allows chaining of DispatchProcessors.

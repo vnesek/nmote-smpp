@@ -6,7 +6,7 @@
 package com.nmote.smpp;
 
 /**
- * GenericNackException is throwed when GenerickNackPDU is received instead of
+ * GenericNackException is thrown when GenerickNackPDU is received instead of
  * expected PDU type.
  *
  * @author Vjekoslav Nesek

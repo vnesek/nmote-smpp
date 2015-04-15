@@ -6,7 +6,7 @@
 package com.nmote.smpp;
 
 /**
- * CommandTimedOutException is throwed from synchronous Session calss if command
+ * CommandTimedOutException is thrown from synchronous Session calls if command
  * execution isn't completed in a specified time.
  *
  * @author Vjekoslav Nesek

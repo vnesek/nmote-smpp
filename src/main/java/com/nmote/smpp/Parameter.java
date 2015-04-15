@@ -11,7 +11,7 @@ import com.nmote.util.Hex;
 
 /**
  * Parameter is a holder for PDU TLV parameters. Data is stored as a byte array.
- * There is a number of helper getter and setter methods for more convinient
+ * There is a number of helper getter and setter methods for more convenient
  * data access.
  *
  * @author Vjekoslav Nesek

@@ -6,7 +6,7 @@
 package com.nmote.smpp;
 
 /**
- * Throwed when command is executed on a closed session.
+ * Thrown when command is executed on a closed session.
  */
 public class SessionClosedException extends SessionException {
 

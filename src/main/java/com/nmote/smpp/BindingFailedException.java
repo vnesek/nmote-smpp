@@ -6,7 +6,7 @@
 package com.nmote.smpp;
 
 /**
- * BindingFailedException is throwed when binding process failes for some
+ * BindingFailedException is thrown when binding process fails for some
  * reason.
  *
  * @author Vjekoslav Nesek
