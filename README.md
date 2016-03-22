@@ -20,7 +20,7 @@ If you use maven for dependency management, add following snippet to pom.xml:
 		<dependency>
 			<groupId>com.nmote.smpp</groupId>
 			<artifactId>nmote-smpp</artifactId>
-			<version>1.7.1</version>
+			<version>1.7.2</version>
 		</dependency>
 
 	</dependencies>
@@ -28,6 +28,9 @@ If you use maven for dependency management, add following snippet to pom.xml:
 
 Changes
 -------
+
+1.7.2 Upgraded commons collections to 3.2.2. Version 3.2.1 has a CVSS 10.0 vulnerability.
+      Thanks to Glenn Lewis for bringing the issue up.
 
 1.7.1 New sample class (SmscConnection), starting point for integration into other projects.
       Added MessageState constants. Fixed DCS UCS-2 unicode decoding/encoding. Few javadoc typos and few

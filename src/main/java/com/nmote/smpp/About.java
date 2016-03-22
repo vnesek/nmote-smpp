@@ -15,13 +15,13 @@ public class About {
 
 	public static final int MAJOR = 1;
 	public static final int MINOR = 7;
-	public static final int REVISION = 1;
+	public static final int REVISION = 2;
 
 	static final long SERIAL_VERSION_UID = MAJOR * 100 + MINOR * 10 + REVISION;
 
 	public static final String VERSION = MAJOR + "." + MINOR + "." + REVISION;
 	public static final String COPYRIGHT = "Nmote-SMPP " + VERSION
-			+ ". Copyright (c) Nmote ltd. 2003-2015. All rights reserved.";
+			+ ". Copyright (c) Nmote ltd. 2003-2016. All rights reserved.";
 
 	public static void main(String[] args) {
 		System.out.println(COPYRIGHT);
